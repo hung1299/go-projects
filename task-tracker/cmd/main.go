@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"hung1299/roadmap-projects/task-tracker/internal/file"
-	"hung1299/roadmap-projects/task-tracker/internal/task"
+	"hung1299/go-projects/task-tracker/internal/file"
+	"hung1299/go-projects/task-tracker/internal/task"
 )
 
 func main() {

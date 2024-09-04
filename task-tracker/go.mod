@@ -1,4 +1,4 @@
-module hung1299/roadmap-projects/task-tracker
+module hung1299/go-projects/task-tracker
 
 go 1.23.0
 
