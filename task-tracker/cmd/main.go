@@ -2,21 +2,17 @@ package main
 
 import (
 	"fmt"
-	"hung1299/go-projects/task-tracker/internal/file"
-	"hung1299/go-projects/task-tracker/internal/task"
+	"hung1299/go-projects/task-tracker/cmd/app"
+	"os"
 )
 
 func main() {
-	// cmd := task.InitRootCommand()
+	cmd := app.InitRootCommand()
 
-	// err := cmd.Execute()
+	err := cmd.Execute()
 
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	os.Exit(1)
-	// }
-
-	file.Save("test.json", []byte(`{"tasks": []}`))
-
-	fmt.Println("tasks", task.GetAllTasks())
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
