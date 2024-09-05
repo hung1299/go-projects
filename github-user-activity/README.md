@@ -20,4 +20,7 @@ Run the following command to build and run the project:
 make build
 or 
 make build-window # for window
+
+# To view events of a github user
+./github-activity <user name>
 ```
