@@ -8,4 +8,11 @@ The solution for each project is in the perspective folder. the folder name is t
 - [Task Tracker](https://github.com/hung1299/go-projects/tree/main/task-tracker)
 
 Sample solution for the [task-tracker](https://roadmap.sh/projects/task-tracker) challenge from [roadmap.sh](https://roadmap.sh/).
+
+---
+
+- [GitHub User Activity](https://github.com/hung1299/go-projects/tree/main/github-user-activity)
+
+Sample solution for the [github-user-activity](https://roadmap.sh/projects/github-user-activity) challenge from [roadmap.sh](https://roadmap.sh/).
+
 ---

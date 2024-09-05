@@ -1,5 +1,5 @@
 filename=main.go
-appname={task-tracker}
+appname=github-activity
 
 run:
 	go run ./cmd/${filename}
