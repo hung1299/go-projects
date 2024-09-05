@@ -10,8 +10,8 @@ import (
 
 var DeleteCommand = &cobra.Command{
 	Use:   "delete",
-	Short: "delete a new task to list",
-	Long:  "delete a new task to list",
+	Short: "delete a task out of the list",
+	Long:  "delete a task out of the list",
 	Args:  cobra.ExactArgs(1),
 	Run:   deleteTask,
 }

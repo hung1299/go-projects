@@ -7,8 +7,8 @@ import (
 func InitRootCommand() *cobra.Command {
 	rc := &cobra.Command{
 		Use:   "task-tracker",
-		Short: "[Short] Task Tracker is a CLI to tracking your task",
-		Long:  "[Long] Task Tracker is a CLI to tracking your task",
+		Short: "Task Tracker is a CLI to tracking your task",
+		Long:  "Task Tracker is a CLI to tracking your task",
 	}
 
 	rc.AddCommand(AddCommand)

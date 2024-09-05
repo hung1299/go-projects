@@ -10,8 +10,8 @@ import (
 
 var UpdateCommand = &cobra.Command{
 	Use:   "update",
-	Short: "update a new task to list",
-	Long:  "update a new task to list",
+	Short: "update a task",
+	Long:  "update a task",
 	Args:  cobra.ExactArgs(2),
 	Run:   updateTask,
 }
