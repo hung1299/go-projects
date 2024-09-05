@@ -4,6 +4,7 @@ The [Task Tracker](https://roadmap.sh/projects/task-tracker) is a simple task-tr
 
 Idea from [roadmap.sh](https://roadmap.sh/golang/projects)
 
+Project page URL: https://github.com/hung1299/go-projects/tree/main/task-tracker
 ## How to run
 
 You need to clone this project into your local machine first.
