@@ -7,7 +7,6 @@ import (
 )
 
 func Forward(req *http.Request, url string) *http.Response {
-	fmt.Println(url + req.URL.Path)
 	hr, err := http.NewRequest(req.Method, url+req.URL.Path, req.Body)
 	if err != nil {
 		fmt.Println("something wrong when create new request!!", err)

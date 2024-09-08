@@ -1,36 +1,38 @@
 package proxy
 
 import (
+	"bytes"
 	"hung1299/go-projects/caching-proxy/global"
-	"hung1299/go-projects/caching-proxy/internal/proxy"
+	"hung1299/go-projects/caching-proxy/internal/cache"
+	"hung1299/go-projects/caching-proxy/internal/http/proxy"
+	"hung1299/go-projects/caching-proxy/internal/http/response"
 	"io"
-	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 func InitProxyRouter(r *gin.Engine) {
-	r.NoRoute(func(c *gin.Context) {
-		resp := proxy.Forward(c.Request, global.Config.Origin)
-
-		forwardResponse(c, resp)
-	})
+	r.NoRoute(handlerProxyRoute)
 }
 
-func forwardResponse(c *gin.Context, resp *http.Response) {
-	c.Status(resp.StatusCode)
+func handlerProxyRoute(c *gin.Context) {
+	key := c.Request.URL.Path
 
-	for k, vs := range resp.Header {
-		for _, v := range vs {
-			c.Header(k, v)
-		}
-	}
+	i := cache.Get(key)
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "Failed to read response body"})
+	if i != nil {
+		resp := response.ToResponse(i.Value)
+		resp.Header.Set("X-Cache", "HIT")
+		response.Copy(c, resp)
 		return
 	}
 
-	c.Writer.Write(body)
+	resp := proxy.Forward(c.Request, global.Config.Origin)
+	r, b := response.ToBytes(resp)
+	cache.Set(key, r, time.Hour)
+
+	resp.Body = io.NopCloser(bytes.NewBuffer(b))
+	resp.Header.Set("X-Cache", "MISS")
+	response.Copy(c, resp)
 }
